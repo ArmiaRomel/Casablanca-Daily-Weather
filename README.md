@@ -8,8 +8,8 @@ This project automates the extraction, transformation, and loading (ETL) of dail
 
 2. **Data Source**: Weather data is sourced from [wttr.in](https://github.com/chubin/wttr.in), a simple text-based weather information provider.
 
-3. **Shell Script Breakdown**:
-   - The script performs the ETL process in four main steps: data extraction, data filtering, transformation, and logging. Below is the detailed process:
+3. **Shell Script Breakdown**: The script performs the ETL process in four main steps: data extraction, data filtering, transformation, and logging.
+
 
 ## Process
 
@@ -51,13 +51,13 @@ This project automates the extraction, transformation, and loading (ETL) of dail
    echo -e "$year\t$month\t$day\t$obs_tmp\t$fc_tmp" >> rx_poc.log
    ```
 
-5. **Scheduling**
-   To ensure data is logged daily at Casablanca’s noon, the script uses a cron job. With Casablanca’s local time zone being UTC+1 and the machine’s default time zone in EDT (UTC-5), a 5-hour difference is accounted for by setting the cron job to execute at 7:00 AM EDT:
+**Scheduling**
+   To ensure data is logged daily at Casablanca’s noon, the script uses a cron job. With Casablanca’s local time zone being UTC+1 and the machine’s default time zone in EDT (UTC-4), a 5-hour difference is accounted for by setting the cron job to execute at 7:00 AM EDT:
    ```bash
    0 7 * * * /path/to/script.sh
    ```
 
-6. **Output**
+**Output**
    The final output is stored in a log file (`rx_poc.log`), with each entry in the format:
    ```sql
    year   month   day   observed_temperature   forecasted_temperature
