@@ -16,7 +16,7 @@ This project automates the extraction, transformation, and loading (ETL) of dail
 1. **Data Extraction**  
    The script retrieves Casablanca’s daily weather data at noon UTC using the following `curl` command:
    ```bash
-   curl wttr.in/casablanca -o /home/kali/Documents/project/raw_data_$(date -u +%Y%m%d)
+   curl wttr.in/casablanca -o /home/usr/Documents/project/raw_data_$(date -u +%Y%m%d)
    ```
    This command saves the raw weather data in a file named with the date format YYYYMMDD to ensure unique and organized daily files.
 
@@ -54,16 +54,16 @@ This project automates the extraction, transformation, and loading (ETL) of dail
 **Scheduling**
    To ensure data is logged daily at Casablanca’s noon, the script uses a cron job. With Casablanca’s local time zone being UTC+1 and the machine’s default time zone in EDT (UTC-4), a 5-hour difference is accounted for by setting the cron job to execute at 7:00 AM EDT:
    ```bash
-   0 7 * * * /path/to/script.sh
+   0 7 * * * /home/usr/Documents/project/rx_poc.sh
    ```
 
 **Output**
    The final output is stored in a log file (`rx_poc.log`), with each entry in the format:
    ```sql
-   year   month   day   observed_temperature   forecasted_temperature
+   year   month   day   obs_tmp   fc_tmp
    ```
 
 ## Example Log File Entry
 ```yaml
-2024    11      01      18      21
+2024    10      26      +22(25)      19
 ```
